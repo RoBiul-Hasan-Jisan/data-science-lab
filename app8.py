@@ -55,6 +55,6 @@ if st.button("Predict Survival"):
     proba = model.predict_proba(input_scaled)[0][pred]
 
     if pred == 1:
-        st.success(f"🚢 Predicted to SURVIVE with probability {proba:.2f}")
+        st.success(f"Predicted to SURVIVE with probability {proba:.2f}")
     else:
-        st.error(f"☠️ Predicted NOT to survive with probability {proba:.2f}")
+        st.error(f"Predicted NOT to survive with probability {proba:.2f}")
