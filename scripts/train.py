@@ -12,7 +12,7 @@ batch_size = 16
 image_size = 128
 epochs = 10
 learning_rate = 0.001
-model_save_path = "models/flower_resnet18_best.pth"  # <- use this consistent filename
+model_save_path = "models/flower_resnet18_best.pth"  
 
 
 # === TRANSFORM ===
