@@ -12,7 +12,8 @@ batch_size = 16
 image_size = 128
 epochs = 10
 learning_rate = 0.001
-model_save_path = "models/cnn_baseline.pth"
+model_save_path = "models/flower_resnet18_best.pth"  # <- use this consistent filename
+
 
 # === TRANSFORM ===
 transform = transforms.Compose([
@@ -139,5 +140,8 @@ for epoch in range(epochs):
 
 # === SAVE THE MODEL ===
 os.makedirs("models", exist_ok=True)
-torch.save(model.state_dict(), model_save_path)
-print(f"✅ Model saved at: {model_save_path}")
+
+
+torch.save(model.state_dict(), "models/flower_resnet18_best.pth")
+print("✅ Model saved.")
+
