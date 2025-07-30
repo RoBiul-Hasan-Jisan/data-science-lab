@@ -1,2 +1,2 @@
 scripts/tsne_data.pkl
-model\flower_classifier.pth
+model/flower_classifier.pth
