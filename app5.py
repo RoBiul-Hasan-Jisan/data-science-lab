@@ -3,32 +3,43 @@ import torch
 from torchvision import transforms, models
 from PIL import Image
 import os
+import requests
 
-# Path to your saved model
-MODEL_PATH = r"D:\ml_lern\model\flower_classifier.pth"
+# Google Drive direct download link for the model file
+MODEL_URL = "https://drive.google.com/uc?export=download&id=1T722u9sxYjFkAvQFI1xjzJbXTDWbAtxN"
+MODEL_PATH = "model/flower_classifier.pth"
 
-# Device configuration (CPU or GPU)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+def download_model():
+    if not os.path.exists(MODEL_PATH):
+        os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
+        st.info("Downloading model, please wait...")
+        response = requests.get(MODEL_URL, stream=True)
+        total_size = int(response.headers.get('content-length', 0))
+        downloaded = 0
+        with open(MODEL_PATH, "wb") as f:
+            for data in response.iter_content(chunk_size=8192):
+                f.write(data)
+                downloaded += len(data)
+                st.progress(min(downloaded / total_size, 1.0))
+        st.success("Model downloaded!")
 
 @st.cache_resource(show_spinner=False)
 def load_model():
-    # Load the saved checkpoint
+    download_model()
     checkpoint = torch.load(MODEL_PATH, map_location=device)
     class_names = checkpoint['class_names']
 
-    # Initialize model architecture
     model = models.resnet18(pretrained=False)
     model.fc = torch.nn.Linear(model.fc.in_features, len(class_names))
 
-    # Load weights
     model.load_state_dict(checkpoint['model_state_dict'])
     model.eval()
     model.to(device)
-
     return model, class_names
 
 def preprocess_image(image: Image.Image):
-    # Define image transformations matching training
     transform = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
@@ -49,10 +60,8 @@ def main():
     st.title("🌸 Flower Image Classifier")
     st.write("Upload a flower image and the model will predict its class.")
 
-    # Load model and class names once (cached)
     model, class_names = load_model()
 
-    # File uploader widget
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
     if uploaded_file is not None:
