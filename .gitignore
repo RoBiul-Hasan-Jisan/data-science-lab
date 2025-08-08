@@ -15,3 +15,5 @@ __pycache__/
 scripts/models/flower_resnet18_best.pth
 
 scripts/models/best_flower_model.pth
+
+reserch/models
