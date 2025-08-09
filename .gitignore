@@ -1,6 +1,6 @@
 # Ignore specific large files
 scripts/tsne_data.pkl
-model/flower_classifier.pth
+
 deep_lerning/notebook/mnist_ann_model.pth
 scripts/models/flower_resnet18.pth
 scripts/models/flower_resnet18_best.pth
