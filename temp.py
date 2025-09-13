@@ -6,7 +6,7 @@ import torch.optim as optim
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 
-st.title("Global Temperature Prediction 🌡️")
+st.title("Global Temperature Prediction ")
 
 DATA_URL = "https://berkeley-earth-temperature.s3.us-west-1.amazonaws.com/Global/Land_and_Ocean_complete.txt"
 
@@ -84,5 +84,5 @@ temp_c = 14 + predicted_anomaly
 temp_f = temp_c * 9/5 + 32
 
 st.write(f"### Predicted Temperature for {int(input_day)}/{int(input_month)}/{int(input_year)}")
-st.write(f"🌡️ Celsius: {temp_c:.2f} °C")
-st.write(f"🌡️ Fahrenheit: {temp_f:.2f} °F")
+st.write(f" Celsius: {temp_c:.2f} °C")
+st.write(f" Fahrenheit: {temp_f:.2f} °F")
