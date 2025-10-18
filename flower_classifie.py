@@ -7,7 +7,7 @@ import requests
 
 # Google Drive direct download link for the model file
 MODEL_URL = "https://drive.google.com/uc?export=download&id=1T722u9sxYjFkAvQFI1xjzJbXTDWbAtxN"
-MODEL_PATH = "model/flower_classifier.pth"
+MODEL_PATH = "model/flower_classifier.pth"  
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
