@@ -1,6 +1,6 @@
 # Belarus Car Price Prediction
 
-![Belarus Car Market](https://www.kaggle.com/datasets/slavapasedko/belarus-used-cars-prices)
+Dataset: https://www.kaggle.com/datasets/slavapasedko/belarus-used-cars-prices
 
 ## Project Overview
 
