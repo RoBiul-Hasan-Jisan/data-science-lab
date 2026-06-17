@@ -20,3 +20,4 @@ reserch/models
 scripts/models
 scripts/models/flower_resnet18_best.pth
 tiles/
+dataset/
